@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useUIStore } from "~~/store";
+
 interface Props {
   title: string;
   isLoading: boolean;
@@ -6,7 +8,7 @@ interface Props {
 
 const { title } = defineProps<Props>();
 
-const selectedTab = inject("selectedTab");
+const store = useUIStore();
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const selectedTab = inject("selectedTab");
     <section
       class="flex flex-col w-full space-y-4"
       v-else
-      v-show="title === selectedTab"
+      v-show="title === store.selectedTab"
     >
       <slot />
     </section>

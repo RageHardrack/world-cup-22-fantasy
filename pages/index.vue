@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useUIStore } from "~~/store";
+
+const store = useUIStore();
 
 const { data: groups, pending: groupsLoading } = useLazyAsyncData(
   "matches",
@@ -6,28 +9,27 @@ const { data: groups, pending: groupsLoading } = useLazyAsyncData(
 );
 
 const { data: octavos, pending: octavosLoading } = useLazyAsyncData(
-  "matches",
+  "octavos",
   () => $fetch("/api/matches/octavos")
 );
 
 const { data: cuartos, pending: cuartosLoading } = useLazyAsyncData(
-  "matches",
+  "cuartos",
   () => $fetch("/api/matches/cuartos")
 );
 
 const { data: semifinals, pending: semifinalsLoading } = useLazyAsyncData(
-  "matches",
+  "semifinals",
   () => $fetch("/api/matches/semifinals")
 );
 
 const { data: thirdPlace, pending: thirdPlaceLoading } = useLazyAsyncData(
-  "matches",
+  "thirdPlace",
   () => $fetch("/api/matches/third-place")
 );
 
-const { data: final, pending: finalLoading } = useLazyAsyncData(
-  "matches",
-  () => $fetch("/api/matches/final")
+const { data: final, pending: finalLoading } = useLazyAsyncData("final", () =>
+  $fetch("/api/matches/final")
 );
 
 definePageMeta({
@@ -81,11 +83,11 @@ definePageMeta({
 
       <Tab title="Cuartos" :isLoading="cuartosLoading">
         <ResultCard header="Cuartos" :matches="cuartos!" />
-        </Tab>
+      </Tab>
 
       <Tab title="Semifinal" :isLoading="semifinalsLoading">
         <ResultCard header="Semifinal" :matches="semifinals!" />
-        </Tab>
+      </Tab>
 
       <Tab title="3° y 4° Puesto" :isLoading="thirdPlaceLoading">
         <ResultCard header="3° y 4° Puesto" :matches="thirdPlace!" />

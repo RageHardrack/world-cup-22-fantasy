@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    [
+      "@pinia/nuxt",
+      { autoImports: ["defineStore", ["defineStore", "definePiniaStore"]] },
+    ],
+  ],
+
   runtimeConfig: {
     notionSecret: process.env.NOTION_API_KEY,
     groupMatchesDB: process.env.GROUP_MATCHES_DATABASE_ID,
@@ -10,6 +17,6 @@ export default defineNuxtConfig({
     thirdPlaceMatchDB: process.env.THIRD_PLACE_MATCH_DATABASE_ID,
     finalMatchDB: process.env.FINAL_MATCH_DATABASE_ID,
     stadiumsDB: process.env.STADIUMS_DATABASE_ID,
-    countriesDB: process.env.COUNTRIES_DATABASE_ID
-  }
+    countriesDB: process.env.COUNTRIES_DATABASE_ID,
+  },
 });

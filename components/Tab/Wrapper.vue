@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { RESULTS_TABS } from "~~/constantes";
+import { useUIStore } from "~~/store";
 
-const selectedTab = ref(RESULTS_TABS[0]);
-provide("selectedTab", selectedTab);
-
-const selectTab = (tabValue: string) => (selectedTab.value = tabValue);
+const store = useUIStore();
 </script>
 
 <template>
@@ -13,8 +11,8 @@ const selectTab = (tabValue: string) => (selectedTab.value = tabValue);
       <ButtonTab
         v-for="etapa in RESULTS_TABS"
         :key="etapa"
-        @click="selectTab(etapa)"
-        :class="{ 'bg-color-4': selectedTab === etapa }"
+        @click="store.selectTab(etapa)"
+        :class="{ 'bg-color-4': store.selectedTab === etapa }"
       >
         {{ etapa }}
       </ButtonTab>
