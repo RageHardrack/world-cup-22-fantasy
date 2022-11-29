@@ -55,7 +55,7 @@ class MatchServices {
         sorts: [
           {
             property: "Fecha",
-            direction: "descending",
+            direction: "ascending",
           },
         ],
       }
@@ -74,7 +74,7 @@ class MatchServices {
         sorts: [
           {
             property: "Fecha",
-            direction: "descending",
+            direction: "ascending",
           },
         ],
       }
@@ -92,7 +92,7 @@ class MatchServices {
         sorts: [
           {
             property: "Fecha",
-            direction: "descending",
+            direction: "ascending",
           },
         ],
       }
