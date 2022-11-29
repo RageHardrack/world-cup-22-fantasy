@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: matches, pending: matchesLoading } = useLazyAsyncData("matches", () =>
-  $fetch("/api/matches")
+  $fetch("/api/matches/groups")
 );
 
 definePageMeta({
