@@ -45,53 +45,84 @@ class MatchServices {
     return matchAdapter(results, populateOptions);
   }
 
-  // async getOctavosMatches(): Promise<IMatch[]> {
-  //   return await this.NotionClient.getDatabase<MatchNotionResponse[]>(this.octavosMatchesId, {
-  //     page_size: 8,
-  //     sorts: [
-  //       {
-  //         property: "Fecha",
-  //         direction: "descending",
-  //       },
-  //     ],
-  //   });
-  // }
+  async getOctavosMatches(
+    populateOptions: PopulateRelationOptions
+  ): Promise<IMatch[]> {
+    const results = await this.NotionClient.getDatabase<MatchNotionResponse[]>(
+      this.octavosMatchesId,
+      {
+        page_size: 8,
+        sorts: [
+          {
+            property: "Fecha",
+            direction: "descending",
+          },
+        ],
+      }
+    );
 
-  // async getCuartosMatches(): Promise<IMatch[]> {
-  //   return await this.NotionClient.getDatabase<MatchNotionResponse[]>(this.cuartosMatchesId, {
-  //     page_size: 4,
-  //     sorts: [
-  //       {
-  //         property: "Fecha",
-  //         direction: "descending",
-  //       },
-  //     ],
-  //   });
-  // }
+    return matchAdapter(results, populateOptions);
+  }
 
-  // async getSemifinalMatches(): Promise<IMatch[]> {
-  //   return await this.NotionClient.getDatabase<MatchNotionResponse[]>(this.semifinalMatchesId, {
-  //     page_size: 2,
-  //     sorts: [
-  //       {
-  //         property: "Fecha",
-  //         direction: "descending",
-  //       },
-  //     ],
-  //   });
-  // }
+  async getCuartosMatches(
+    populateOptions: PopulateRelationOptions
+  ): Promise<IMatch[]> {
+    const results = await this.NotionClient.getDatabase<MatchNotionResponse[]>(
+      this.cuartosMatchesId,
+      {
+        page_size: 4,
+        sorts: [
+          {
+            property: "Fecha",
+            direction: "descending",
+          },
+        ],
+      }
+    );
+    return matchAdapter(results, populateOptions);
+  }
 
-  // async getThirdPlaceMatch(): Promise<IMatch[]> {
-  //   return await this.NotionClient.getDatabase<MatchNotionResponse[]>(this.thirdPlaceMatchId, {
-  //     page_size: 1,
-  //   });
-  // }
+  async getSemifinalMatches(
+    populateOptions: PopulateRelationOptions
+  ): Promise<IMatch[]> {
+    const results = await this.NotionClient.getDatabase<MatchNotionResponse[]>(
+      this.semifinalMatchesId,
+      {
+        page_size: 2,
+        sorts: [
+          {
+            property: "Fecha",
+            direction: "descending",
+          },
+        ],
+      }
+    );
+    return matchAdapter(results, populateOptions);
+  }
 
-  // async getFinalMatch(): Promise<IMatch[]> {
-  //   return await this.NotionClient.getDatabase<MatchNotionResponse[]>(this.finalMatchId, {
-  //     page_size: 1,
-  //   });
-  // }
+  async getThirdPlaceMatch(
+    populateOptions: PopulateRelationOptions
+  ): Promise<IMatch[]> {
+    const results = await this.NotionClient.getDatabase<MatchNotionResponse[]>(
+      this.thirdPlaceMatchId,
+      {
+        page_size: 1,
+      }
+    );
+    return matchAdapter(results, populateOptions);
+  }
+
+  async getFinalMatch(
+    populateOptions: PopulateRelationOptions
+  ): Promise<IMatch[]> {
+    const results = await this.NotionClient.getDatabase<MatchNotionResponse[]>(
+      this.finalMatchId,
+      {
+        page_size: 1,
+      }
+    );
+    return matchAdapter(results, populateOptions);
+  }
 }
 
 export const MatchService = new MatchServices(

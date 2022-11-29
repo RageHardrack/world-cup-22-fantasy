@@ -13,10 +13,10 @@ import { IStadium } from "./Stadium";
 export interface IMatch {
   id: string;
   Estadio: IStadium;
-  Visitante: ICountry;
+  Visitante?: ICountry;
   Fecha: string;
   Grupo?: string;
-  Local: ICountry;
+  Local?: ICountry;
   Goles_Visitante: number;
   Goles_Local: number;
   Partido: string;
@@ -39,10 +39,10 @@ export interface MatchNotionResponse {
 
 export interface MatchNotionPropertiesResponse {
   Estadio: RelationProperty;
-  Visitante: RelationProperty;
+  Visitante?: RelationProperty;
   Fecha: DateProperty;
   Grupo?: SelectProperty;
-  Local: RelationProperty;
+  Local?: RelationProperty;
   Goles_Visitante: NumberProperty;
   Goles_Local: NumberProperty;
   Partido: TitleProperty;
@@ -50,10 +50,10 @@ export interface MatchNotionPropertiesResponse {
 
 export interface IMatchProperties {
   Estadio: IStadium;
-  Visitante: ICountry;
+  Visitante?: ICountry;
   Fecha: string;
   Grupo?: string;
-  Local: ICountry;
+  Local?: ICountry;
   Goles_Visitante: number;
   Goles_Local: number;
   Partido: string;

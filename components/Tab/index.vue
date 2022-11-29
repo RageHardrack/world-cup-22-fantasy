@@ -11,7 +11,8 @@ const selectedTab = inject("selectedTab");
 
 <template>
   <div class="w-full">
-    <h2 v-if="isLoading">Loading...</h2>
+    <Loading v-if="isLoading" />
+
     <section
       class="flex flex-col w-full space-y-4"
       v-else

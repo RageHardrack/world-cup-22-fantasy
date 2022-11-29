@@ -13,8 +13,8 @@ defineProps<Props>();
   <li class="grid items-center grid-cols-4 py-4">
     <div class="grid items-center justify-center grid-cols-3 col-span-2">
       <div class="flex items-center justify-end gap-x-2">
-        <p>{{ match.Local.Country }}</p>
-        <Flag :countryEN="match.Local.EN" />
+        <p>{{ match.Local?.Country || 'Pendiente' }}</p>
+        <Flag :countryEN="match.Local?.EN" />
       </div>
 
       <div class="flex items-center justify-center gap-x-4">
@@ -30,8 +30,8 @@ defineProps<Props>();
       </div>
 
       <div class="flex items-center justify-start gap-x-2">
-        <Flag :countryEN="match.Visitante.EN" />
-        <p>{{ match.Visitante.Country }}</p>
+        <Flag :countryEN="match.Visitante?.EN" />
+        <p>{{ match.Visitante?.Country || 'Pendiente' }}</p>
       </div>
     </div>
 
