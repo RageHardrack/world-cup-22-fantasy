@@ -1,0 +1,48 @@
+export const FOOTER_LINKS = {
+  selene: "https://behance.com",
+  daniel: "https://dan-website-nuxt3.vercel.app/",
+};
+
+export const RESULTS_TABS = [
+  "Fase de Grupos",
+  "Octavos",
+  "Cuartos",
+  "Semifinal",
+  "3° y 4° Puesto",
+  "Final",
+];
+
+export const COUNTRY_EN_TO_ES = {
+  Ecuador: "Ecuador",
+  England: "Inglaterra",
+  Iran: "Irán",
+  Netherlands: "Países Bajos",
+  Qatar: "Qatar",
+  Senegal: "Senegal",
+  "United States": "Estados Unidos",
+  Wales: "Gales",
+  Argentina: "Argentina",
+  Poland: "Polonia",
+  "Saudi Arabia": "Arabia Saudita",
+  Denmark: "Dinamarca",
+  Tunisia: "Túnez",
+  France: "Francia",
+  Australia: "Australia",
+  Mexico: "México",
+  Germany: "Alemania",
+  Spain: "España",
+  Japan: "Japón",
+  "Costa Rica": "Costa Rica",
+  Morocco: "Marruecos",
+  Croatia: "Croacia",
+  Belgium: "Bélgica",
+  Canada: "Canadá",
+  Brazil: "Brasil",
+  Cameroon: "Camerún",
+  Switzerland: "Suiza",
+  Serbia: "Serbia",
+  Portugal: "Portugal",
+  Ghana: "Ghana",
+  Uruguay: "Uruguay",
+  "South Korea": "Corea del Sur",
+};
