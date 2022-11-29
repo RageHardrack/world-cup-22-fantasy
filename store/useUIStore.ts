@@ -4,10 +4,12 @@ export interface UIState {
   selectedTab: string;
 }
 
+const state = (): UIState => ({
+  selectedTab: RESULTS_TABS[0],
+});
+
 export const useUIStore = definePiniaStore("UI", {
-  state: (): UIState => ({
-    selectedTab: RESULTS_TABS[0],
-  }),
+  state,
   getters: {
     getSelectedTab: (state: UIState) => computed(() => state.selectedTab),
   },

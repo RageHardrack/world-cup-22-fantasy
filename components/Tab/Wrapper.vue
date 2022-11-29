@@ -12,7 +12,7 @@ const store = useUIStore();
         v-for="etapa in RESULTS_TABS"
         :key="etapa"
         @click="store.selectTab(etapa)"
-        :class="{ 'bg-color-4': store.selectedTab === etapa }"
+        :class="{ 'bg-color-4': store.getSelectedTab.value === etapa }"
       >
         {{ etapa }}
       </ButtonTab>
