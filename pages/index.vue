@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 const { data: groups, pending: groupsLoading } = useLazyAsyncData(
   "matches",
   () => $fetch("/api/matches/groups")
@@ -7,6 +8,26 @@ const { data: groups, pending: groupsLoading } = useLazyAsyncData(
 const { data: octavos, pending: octavosLoading } = useLazyAsyncData(
   "matches",
   () => $fetch("/api/matches/octavos")
+);
+
+const { data: cuartos, pending: cuartosLoading } = useLazyAsyncData(
+  "matches",
+  () => $fetch("/api/matches/cuartos")
+);
+
+const { data: semifinals, pending: semifinalsLoading } = useLazyAsyncData(
+  "matches",
+  () => $fetch("/api/matches/semifinals")
+);
+
+const { data: thirdPlace, pending: thirdPlaceLoading } = useLazyAsyncData(
+  "matches",
+  () => $fetch("/api/matches/third-place")
+);
+
+const { data: final, pending: finalLoading } = useLazyAsyncData(
+  "matches",
+  () => $fetch("/api/matches/final")
 );
 
 definePageMeta({
@@ -58,15 +79,21 @@ definePageMeta({
         <ResultCard header="Octavos" :matches="octavos!" />
       </Tab>
 
-      <Tab title="Cuartos" :isLoading="false">Cuartos</Tab>
+      <Tab title="Cuartos" :isLoading="cuartosLoading">
+        <ResultCard header="Cuartos" :matches="cuartos!" />
+        </Tab>
 
-      <Tab title="Semifinal" :isLoading="false">Semifinal</Tab>
+      <Tab title="Semifinal" :isLoading="semifinalsLoading">
+        <ResultCard header="Semifinal" :matches="semifinals!" />
+        </Tab>
 
-      <Tab title="3° y 4° Puesto" :isLoading="false">
-        Tercer y cuarto puesto
+      <Tab title="3° y 4° Puesto" :isLoading="thirdPlaceLoading">
+        <ResultCard header="3° y 4° Puesto" :matches="thirdPlace!" />
       </Tab>
 
-      <Tab title="Final" :isLoading="false">Final</Tab>
+      <Tab title="Final" :isLoading="finalLoading">
+        <ResultCard header="Final" :matches="final!" />
+      </Tab>
     </TabWrapper>
   </div>
 </template>
