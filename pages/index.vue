@@ -41,7 +41,7 @@ definePageMeta({
   <div
     class="container flex flex-col items-center justify-center w-full space-y-6"
   >
-    <TabWrapper>
+    <TabResultsWrapper>
       <Tab title="Fase de Grupos" :isLoading="groupsLoading">
         <ResultCard
           header="Grupo A"
@@ -96,6 +96,6 @@ definePageMeta({
       <Tab title="Final" :isLoading="finalLoading">
         <ResultCard header="Final" :matches="final!" />
       </Tab>
-    </TabWrapper>
+    </TabResultsWrapper>
   </div>
 </template>

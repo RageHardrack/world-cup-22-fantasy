@@ -15,9 +15,6 @@ module.exports = {
           "color-5": "#1A1A1A",
           "color-6": "#E5D9B6",
           "text-color-8": "#1A1A1A",
-          gold: "#D4AF37",
-          "black-coffee": "#322A26",
-          bone: "#E0DDCF",
         },
       },
       keyframes: {

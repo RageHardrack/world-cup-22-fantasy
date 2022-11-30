@@ -17,7 +17,7 @@
         </li>
       </ul>
 
-      <Button>Iniciar Sesión</Button>
+      <Button>Acceder</Button>
     </div>
   </nav>
 </template>
