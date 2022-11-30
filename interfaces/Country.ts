@@ -1,24 +1,12 @@
 import {
-  TedBy,
-  Parent,
+  NotionResponse,
   TitleProperty,
   UrlProperty,
   RichTextProperty,
-} from "./Shared";
+} from "./";
 
-export interface CountryNotionResponse {
-  object: string;
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: TedBy;
-  last_edited_by: TedBy;
-  cover?: string;
-  icon?: string;
-  parent: Parent;
-  archived: boolean;
+export interface CountryNotionResponse extends NotionResponse {
   properties: CountryNotionResponseProperties;
-  url: string;
 }
 
 export interface CountryNotionResponseProperties {

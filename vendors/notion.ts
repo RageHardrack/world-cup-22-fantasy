@@ -32,6 +32,18 @@ export class NotionClient implements HttpAdapter {
 
     return results as unknown as T;
   }
+
+  async createPage<T>(parentId: string, properties: any): Promise<T> {
+    const response = await this.notion.pages.create({
+      parent: {
+        type: "database_id",
+        database_id: parentId,
+      },
+      properties,
+    });
+
+    return response as unknown as T;
+  }
 }
 
 export const Notion = new NotionClient();

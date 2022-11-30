@@ -1,18 +1,7 @@
-import { TedBy, Parent, TitleProperty } from "./Shared";
+import { NotionResponse, TitleProperty } from ".";
 
-export interface StadiumNotionResponse {
-  object: string;
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: TedBy;
-  last_edited_by: TedBy;
-  cover?: string;
-  icon?: string;
-  parent: Parent;
-  archived: boolean;
+export interface StadiumNotionResponse extends NotionResponse {
   properties: StadiumNotionResponseProperties;
-  url: string;
 }
 
 export interface IStadium {

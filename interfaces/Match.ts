@@ -1,14 +1,13 @@
-import { ICountry } from "./Country";
 import {
+  ICountry,
   DateProperty,
   NumberProperty,
-  Parent,
   SelectProperty,
-  TedBy,
   TitleProperty,
   RelationProperty,
-} from "./Shared";
-import { IStadium } from "./Stadium";
+  NotionResponse,
+  IStadium,
+} from ".";
 
 export interface IMatch {
   id: string;
@@ -22,19 +21,8 @@ export interface IMatch {
   Partido: string;
 }
 
-export interface MatchNotionResponse {
-  object: string;
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: TedBy;
-  last_edited_by: TedBy;
-  cover?: string;
-  icon?: string;
-  parent: Parent;
-  archived: boolean;
+export interface MatchNotionResponse extends NotionResponse {
   properties: MatchNotionPropertiesResponse;
-  url: string;
 }
 
 export interface MatchNotionPropertiesResponse {
