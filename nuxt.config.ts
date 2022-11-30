@@ -27,5 +27,6 @@ export default defineNuxtConfig({
     usersDB: process.env.USER_DATABASE_ID,
     playersDB: process.env.PLAYERS_DATABASE_ID,
     formationsDB: process.env.FORMATIONS_DATABASE_ID,
+    jwtSecret: process.env.JWT_SECRET_KEY
   },
 });

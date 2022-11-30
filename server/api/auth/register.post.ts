@@ -1,6 +1,6 @@
 import { RegisterUser } from "~~/interfaces";
 import { UserService } from "~~/services";
-import { hashField } from "~~/utils";
+import { hashField, generateAccessToken } from "~~/utils";
 
 export default defineEventHandler(async (event) => {
   try {
@@ -10,7 +10,8 @@ export default defineEventHandler(async (event) => {
 
     if (existUser) {
       return {
-        message: "Ese correo ya existe",
+        message: "Ese correo ya está registrado",
+        username: null,
         accessToken: null,
         ok: false,
       };
@@ -20,10 +21,18 @@ export default defineEventHandler(async (event) => {
 
     await UserService.registerUser(body);
 
-    return { message: "Te has registrado con éxito", accessToken: null, ok: true };
+    const accessToken = generateAccessToken(body);
+
+    return {
+      message: "Te has registrado con éxito",
+      username: body.username,
+      accessToken,
+      ok: true,
+    };
   } catch (error) {
     return {
       message: "Ha ocurrido un error al intentar registrarte",
+      username: null,
       accessToken: null,
       ok: false,
     };

@@ -1,7 +1,6 @@
 import { userAdapter } from "~~/adapters/userAdapter";
 import {
   IUser,
-  PopulateRelationOptions,
   RegisterUser,
   UserNotionResponse,
 } from "~~/interfaces";
