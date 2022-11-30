@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     ],
   ],
 
+  app: {
+    layoutTransition: { name: 'layout', mode: 'out-in' },
+    pageTransition: { name: "page", mode: "out-in" },
+  },
+
   runtimeConfig: {
     notionSecret: process.env.NOTION_API_KEY,
     groupMatchesDB: process.env.GROUP_MATCHES_DATABASE_ID,
