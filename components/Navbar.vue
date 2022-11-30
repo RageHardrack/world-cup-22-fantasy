@@ -17,7 +17,7 @@
         </li>
       </ul>
 
-      <Button>Acceder</Button>
+      <ButtonNav route="/auth">Acceder</ButtonNav>
     </div>
   </nav>
 </template>

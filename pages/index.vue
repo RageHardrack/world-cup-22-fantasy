@@ -38,7 +38,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div
+  <section
     class="container flex flex-col items-center justify-center w-full space-y-6"
   >
     <TabResultsWrapper>
@@ -97,5 +97,16 @@ definePageMeta({
         <ResultCard header="Final" :matches="final!" />
       </Tab>
     </TabResultsWrapper>
-  </div>
+  </section>
 </template>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.5s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+</style>

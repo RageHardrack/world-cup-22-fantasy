@@ -19,5 +19,8 @@ export default defineNuxtConfig({
     finalMatchDB: process.env.FINAL_MATCH_DATABASE_ID,
     stadiumsDB: process.env.STADIUMS_DATABASE_ID,
     countriesDB: process.env.COUNTRIES_DATABASE_ID,
+    usersDB: process.env.USER_DATABASE_ID,
+    playersDB: process.env.PLAYERS_DATABASE_ID,
+    formationsDB: process.env.FORMATIONS_DATABASE_ID,
   },
 });
