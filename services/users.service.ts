@@ -59,10 +59,10 @@ class UserServices {
     return userAdapter(results);
   }
 
-  async getUserByEmail(email: string): Promise<IUser | null> {
+  async getUserByEmail(email: string): Promise<IUser | undefined> {
     const users = await this.getUsers();
 
-    return users.find((user: any) => user.Email === email) || null;
+    return users.find((user: IUser) => user.Email === email);
   }
 }
 

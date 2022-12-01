@@ -5,5 +5,5 @@ const salt = bcrypt.genSaltSync(10);
 export const hashField = (fieldToProtect: string) =>
   bcrypt.hashSync(fieldToProtect, salt);
 
-export const compareHash = (original: string, hash: string) =>
+export const compareHash = (original: string, hash: string): boolean =>
   bcrypt.compareSync(original, hash);

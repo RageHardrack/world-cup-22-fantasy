@@ -9,12 +9,13 @@ export default defineEventHandler(async (event) => {
     const existUser = await UserService.getUserByEmail(body.email);
 
     if (existUser) {
-      return {
-        message: "Ese correo ya está registrado",
-        username: null,
-        accessToken: null,
-        ok: false,
-      };
+      return sendError(
+        event,
+        createError({
+          statusMessage: "Ese correo ya está registrado",
+          statusCode: 404,
+        })
+      );
     }
 
     body.password = hashField(body.password);
@@ -30,11 +31,12 @@ export default defineEventHandler(async (event) => {
       ok: true,
     };
   } catch (error) {
-    return {
-      message: "Ha ocurrido un error al intentar registrarte",
-      username: null,
-      accessToken: null,
-      ok: false,
-    };
+    return sendError(
+      event,
+      createError({
+        statusMessage: "Ha ocurrido un error al intentar registrarte",
+        statusCode: 500,
+      })
+    );
   }
 });
