@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
     const accessToken = generateAccessToken(body);
 
     return {
-      message: "Has iniciado sesión con éxito",
+      statusMessage: "Has iniciado sesión con éxito",
       username: existUser.Username,
       accessToken,
       ok: true,

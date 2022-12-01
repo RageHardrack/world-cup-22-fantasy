@@ -20,6 +20,8 @@ const store = useUIStore();
       <h3 class="text-xl">{{ tab }}</h3>
     </header>
 
-    <slot />
+    <section class="flex flex-col space-y-4">
+      <slot />
+    </section>
   </article>
 </template>

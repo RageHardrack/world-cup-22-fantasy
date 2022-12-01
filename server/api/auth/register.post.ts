@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     const accessToken = generateAccessToken(body);
 
     return {
-      message: "Te has registrado con éxito",
+      statusMessage: "Te has registrado con éxito",
       username: body.username,
       accessToken,
       ok: true,

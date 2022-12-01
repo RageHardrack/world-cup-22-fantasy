@@ -3,11 +3,21 @@
 @tailwind utilities;
 
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 
 body {
-    @apply bg-color-6/60
+  @apply bg-color-6/60;
+}
+
+button,
+input,
+textarea {
+  @apply focus:outline-none;
+}
+
+.input-class {
+  @apply w-full px-2 py-1 transition duration-300 border border-gray-500 rounded focus:border-color-4;
 }
 
 /* Transitions */
@@ -37,7 +47,7 @@ body {
 .page-enter-active,
 .page-leave-active,
 .layout-enter-active,
-.layout-leave-active  {
+.layout-leave-active {
   transition: all 0.6s;
 }
 .page-enter-from,
