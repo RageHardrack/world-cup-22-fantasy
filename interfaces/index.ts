@@ -6,4 +6,5 @@ export * from "./Options";
 export * from "./Player";
 export * from "./Shared";
 export * from "./Stadium";
+export * from "./Team";
 export * from "./User";

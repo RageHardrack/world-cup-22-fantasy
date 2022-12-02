@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
-    '@pinia-plugin-persistedstate/nuxt',
+    "@pinia-plugin-persistedstate/nuxt",
     [
       "@pinia/nuxt",
       { autoImports: ["defineStore", ["defineStore", "definePiniaStore"]] },
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   ],
 
   app: {
-    layoutTransition: { name: 'layout', mode: 'out-in' },
+    layoutTransition: { name: "layout", mode: "out-in" },
     pageTransition: { name: "page", mode: "out-in" },
   },
 
@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     usersDB: process.env.USER_DATABASE_ID,
     playersDB: process.env.PLAYERS_DATABASE_ID,
     formationsDB: process.env.FORMATIONS_DATABASE_ID,
-    jwtSecret: process.env.JWT_SECRET_KEY
+    teamsDB: process.env.TEAMS_DATABASE_ID,
+    jwtSecret: process.env.JWT_SECRET_KEY,
   },
 });

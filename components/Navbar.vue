@@ -24,7 +24,7 @@ const store = useUIStore();
       </ul>
 
       <ButtonNav route="/fantasy" v-if="store.isLoggedIn">
-        {{ store.getUsername }}
+        {{ store.getUsername.value }}
       </ButtonNav>
       <ButtonNav route="/auth" v-else>Acceder</ButtonNav>
     </div>

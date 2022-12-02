@@ -1,7 +1,6 @@
 import {
   IUser,
   IUserProperties,
-  PopulateRelationOptions,
   UserNotionResponse,
   UserNotionResponseProperties,
 } from "~~/interfaces";

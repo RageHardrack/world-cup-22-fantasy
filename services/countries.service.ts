@@ -1,6 +1,6 @@
-import { CountryNotionResponse } from "~~/interfaces";
+import { CountryNotionResponse, ICountry } from "~~/interfaces";
 import { Notion, NotionClient } from "~~/vendors";
-import { countryAdapter } from "../adapters";
+import { countryAdapter } from "~~/adapters";
 
 const { countriesDB } = useRuntimeConfig();
 
@@ -10,7 +10,7 @@ class CountryServices {
     private readonly databaseId: string
   ) {}
 
-  async getCountries() {
+  async getCountries(): Promise<ICountry[]> {
     const results = await this.NotionClient.getDatabase<
       CountryNotionResponse[]
     >(this.databaseId, {

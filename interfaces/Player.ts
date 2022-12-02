@@ -1,5 +1,11 @@
-import { ICountry } from "./Country";
-import { TedBy, Parent, TitleProperty, SelectProperty, NumberProperty, RelationProperty } from "./Shared";
+import {
+  TitleProperty,
+  SelectProperty,
+  NumberProperty,
+  RelationProperty,
+  NotionResponse,
+  ICountry,
+} from "./";
 
 export interface IPlayer {
   id: string;
@@ -9,19 +15,8 @@ export interface IPlayer {
   Pais: ICountry;
 }
 
-export interface PlayerNotionResponse {
-  object: string;
-  id: string;
-  created_time: string;
-  last_edited_time: string;
-  created_by: TedBy;
-  last_edited_by: TedBy;
-  cover?: string;
-  icon?: string;
-  parent: Parent;
-  archived: boolean;
+export interface PlayerNotionResponse extends NotionResponse {
   properties: PlayerNotionPropertiesResponse;
-  url: string;
 }
 
 export interface PlayerNotionPropertiesResponse {
