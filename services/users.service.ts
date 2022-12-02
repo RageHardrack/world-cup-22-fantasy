@@ -1,9 +1,5 @@
 import { userAdapter } from "~~/adapters/userAdapter";
-import {
-  IUser,
-  RegisterUser,
-  UserNotionResponse,
-} from "~~/interfaces";
+import { IUser, RegisterUser, UserNotionResponse } from "~~/interfaces";
 import { Notion, NotionClient } from "~~/vendors";
 
 const { usersDB } = useRuntimeConfig();
@@ -14,38 +10,41 @@ class UserServices {
     private readonly usersDB: string
   ) {}
 
-  async registerUser(User: RegisterUser) {
-    const response = await this.NotionClient.createPage(this.usersDB, {
-      Username: {
-        title: [
-          {
-            text: {
-              content: User.username,
+  async registerUser(User: RegisterUser):Promise<IUser> {
+    const response = await this.NotionClient.createPage<UserNotionResponse>(
+      this.usersDB,
+      {
+        Username: {
+          title: [
+            {
+              text: {
+                content: User.username,
+              },
             },
-          },
-        ],
-      },
-      Email: {
-        rich_text: [
-          {
-            text: {
-              content: User.email,
+          ],
+        },
+        Email: {
+          rich_text: [
+            {
+              text: {
+                content: User.email,
+              },
             },
-          },
-        ],
-      },
-      Password: {
-        rich_text: [
-          {
-            text: {
-              content: User.password,
+          ],
+        },
+        Password: {
+          rich_text: [
+            {
+              text: {
+                content: User.password,
+              },
             },
-          },
-        ],
-      },
-    });
+          ],
+        },
+      }
+    );
 
-    return response;
+    return userAdapter([response])[0];
   }
 
   async getUsers(): Promise<IUser[]> {

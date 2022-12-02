@@ -1,5 +1,4 @@
 import {
-  IPlayer,
   NotionResponse,
   TitleProperty,
   RelationProperty,
@@ -7,12 +6,14 @@ import {
 } from ".";
 
 export interface RegisterUser {
+  id?: string;
   username: string;
   email: string;
   password: string;
 }
 
 export interface LoginUser {
+  id?: string;
   email: string;
   password: string;
 }

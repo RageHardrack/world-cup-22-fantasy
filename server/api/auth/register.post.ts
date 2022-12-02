@@ -20,9 +20,9 @@ export default defineEventHandler(async (event) => {
 
     body.password = hashField(body.password);
 
-    await UserService.registerUser(body);
+    const newUser = await UserService.registerUser(body);
 
-    const accessToken = generateAccessToken(body);
+    const accessToken = generateAccessToken({ id: newUser.id, ...body});
 
     return {
       statusMessage: "Te has registrado con éxito",
