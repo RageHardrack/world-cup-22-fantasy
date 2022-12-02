@@ -1,5 +1,10 @@
 import { RegisterUser } from "~~/interfaces";
-import { UserService } from "~~/services";
+import {
+  CountryService,
+  PlayerService,
+  TeamService,
+  UserService,
+} from "~~/services";
 import { hashField, generateAccessToken } from "~~/utils";
 
 export default defineEventHandler(async (event) => {
@@ -13,7 +18,7 @@ export default defineEventHandler(async (event) => {
         event,
         createError({
           statusMessage: "Ese correo ya está registrado",
-          statusCode: 404,
+          statusCode: 403,
         })
       );
     }
@@ -21,8 +26,11 @@ export default defineEventHandler(async (event) => {
     body.password = hashField(body.password);
 
     const newUser = await UserService.registerUser(body);
+    const accessToken = generateAccessToken({ id: newUser.id, ...body });
 
-    const accessToken = generateAccessToken({ id: newUser.id, ...body});
+    const countries = await CountryService.getCountries();
+    const players = await PlayerService.getPlayers({ countries });
+    await TeamService.createUserTeam(newUser.id, { countries, players });
 
     return {
       statusMessage: "Te has registrado con éxito",

@@ -24,9 +24,34 @@ class TeamServices {
       }
     );
 
-    const team = teamAdapter(results, populateOptions)
+    return teamAdapter(results, populateOptions)
 
-    return team;
+  }
+
+  async createUserTeam(userId: string, populateOptions: PopulateRelationOptions) {
+    const results = await this.NotionClient.createPage<TeamNotionResponse>(
+      this.databaseId,
+      {
+        Equipo: {
+          title: [
+            {
+              text: {
+                content: "Mi Equipo",
+              },
+            },
+          ],
+        },
+        UserId: {
+          relation: [
+            {
+              id: userId
+            }
+          ]
+        }
+      }
+    )
+
+    return teamAdapter([results], populateOptions);
   }
 }
 
