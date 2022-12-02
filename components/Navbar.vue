@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useUIStore } from "~~/store";
+
+const store = useUIStore();
+</script>
+
 <template>
   <nav class="flex items-center w-full shadow-lg bg-color-2 shadow-color-6">
     <div class="container flex items-center justify-between py-6 mx-auto">
@@ -17,7 +23,10 @@
         </li>
       </ul>
 
-      <ButtonNav route="/auth">Acceder</ButtonNav>
+      <ButtonNav route="/fantasy" v-if="store.isLoggedIn">
+        {{ store.getUsername }}
+      </ButtonNav>
+      <ButtonNav route="/auth" v-else>Acceder</ButtonNav>
     </div>
   </nav>
 </template>

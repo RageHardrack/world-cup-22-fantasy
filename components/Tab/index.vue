@@ -12,7 +12,7 @@ const store = useUIStore();
 </script>
 
 <template>
-  <div class="w-full" v-show="title === store.selectedTab">
+  <div class="w-full" v-show="(title === store.getSelectedTab.value)">
     <Loading v-if="isLoading" />
 
     <section class="flex flex-col w-full space-y-4" v-else>

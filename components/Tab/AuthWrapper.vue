@@ -5,10 +5,14 @@ import { useUIStore } from "~~/store";
 import { RegisterUserSchema, LoginUserSchema } from "~~/schemas";
 
 const store = useUIStore();
+const router = useRouter();
+
+const isSaving = ref(false);
 
 const handleRegisterSubmit = async (values: any) => {
   try {
-    const response = await $fetch("/api/auth/register", {
+    isSaving.value = true;
+    const { ok, username, accessToken } = await $fetch("/api/auth/register", {
       method: "POST",
       body: {
         username: values.username,
@@ -20,15 +24,21 @@ const handleRegisterSubmit = async (values: any) => {
       },
     });
 
-    console.log({ response });
+    if (ok) {
+      store.setUser(username, accessToken);
+      router.push("/fantasy");
+      isSaving.value = false;
+    }
   } catch (error) {
+    isSaving.value = false;
     console.error(error);
   }
 };
 
 const handleLoginSubmit = async (values: any) => {
   try {
-    const response = await $fetch("/api/auth/login", {
+    isSaving.value = true;
+    const { ok, username, accessToken } = await $fetch("/api/auth/login", {
       method: "POST",
       body: {
         email: values.email,
@@ -39,8 +49,13 @@ const handleLoginSubmit = async (values: any) => {
       },
     });
 
-    console.log({ response });
+    if (ok) {
+      store.setUser(username, accessToken);
+      isSaving.value = false;
+      router.push("/fantasy");
+    }
   } catch (error) {
+    isSaving.value = false;
     console.error(error);
   }
 };
@@ -65,7 +80,7 @@ const handleLoginSubmit = async (values: any) => {
           />
 
           <div class="flex justify-center">
-            <Button type="submit">Iniciar Sesión</Button>
+            <Button type="submit" :isSaving="isSaving">Iniciar Sesión</Button>
           </div>
         </ValidationForm>
 
@@ -93,7 +108,7 @@ const handleLoginSubmit = async (values: any) => {
           />
 
           <div class="flex justify-center">
-            <Button type="submit">Registrarse</Button>
+            <Button type="submit" :isSaving="isSaving">Registrarse</Button>
           </div>
         </ValidationForm>
 

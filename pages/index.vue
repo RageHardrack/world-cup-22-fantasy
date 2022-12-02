@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useUIStore } from "~~/store";
-
-const store = useUIStore();
-
 const { data: groups, pending: groupsLoading } = useLazyAsyncData(
   "matches",
   () => $fetch("/api/matches/groups")

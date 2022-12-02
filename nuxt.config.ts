@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "@vueuse/nuxt",
+    '@pinia-plugin-persistedstate/nuxt',
     [
       "@pinia/nuxt",
       { autoImports: ["defineStore", ["defineStore", "definePiniaStore"]] },
