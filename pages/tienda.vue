@@ -6,7 +6,7 @@ definePageMeta({
 
 <template>
   <section class="container">
-    <h1>Fantasy</h1>
+    <h1>Tiendas</h1>
     <h2>Próximamente</h2>
   </section>
 </template>

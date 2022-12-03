@@ -65,7 +65,7 @@ const handleLoginSubmit = async (values: any) => {
   <section
     class="flex flex-col items-center justify-center w-full max-w-lg space-y-6"
   >
-    <TransitionGroup name="fade" tag="section" class="w-full">
+    <section class="w-full">
       <TabAuth tab="Iniciar Sesión">
         <ValidationForm
           @submit="handleLoginSubmit"
@@ -119,6 +119,6 @@ const handleLoginSubmit = async (values: any) => {
           ¿Ya tienes una cuenta? Inicia sesión!
         </p>
       </TabAuth>
-    </TransitionGroup>
+    </section>
   </section>
 </template>

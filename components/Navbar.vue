@@ -16,10 +16,10 @@ const store = useUIStore();
           <NuxtLink to="/">Resultados</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/">Fantasy</NuxtLink>
+          <NuxtLink to="/fantasy">Fantasy</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/">Tienda</NuxtLink>
+          <NuxtLink to="/tienda">Tienda</NuxtLink>
         </li>
       </ul>
 
