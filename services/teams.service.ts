@@ -1,6 +1,10 @@
-import { ITeam, TeamNotionResponse, PopulateRelationOptions } from "~~/interfaces";
+import {
+  ITeam,
+  TeamNotionResponse,
+  PopulateRelationOptions,
+} from "~~/interfaces";
 import { Notion, NotionClient } from "~~/vendors";
-import {teamAdapter} from "~~/adapters";
+import { teamAdapter } from "~~/adapters";
 
 const { teamsDB } = useRuntimeConfig();
 
@@ -10,7 +14,10 @@ class TeamServices {
     private readonly databaseId: string
   ) {}
 
-  async getUserTeam(userId: string, populateOptions: PopulateRelationOptions): Promise<ITeam> {
+  async getUserTeam(
+    userId: string,
+    populateOptions: PopulateRelationOptions
+  ): Promise<ITeam> {
     const results = await this.NotionClient.getDatabase<TeamNotionResponse[]>(
       this.databaseId,
       {
@@ -24,11 +31,13 @@ class TeamServices {
       }
     );
 
-    return teamAdapter(results, populateOptions)
-
+    return teamAdapter(results, populateOptions);
   }
 
-  async createUserTeam(userId: string, populateOptions: PopulateRelationOptions) {
+  async createUserTeam(
+    userId: string,
+    populateOptions: PopulateRelationOptions
+  ) {
     const results = await this.NotionClient.createPage<TeamNotionResponse>(
       this.databaseId,
       {
@@ -44,14 +53,21 @@ class TeamServices {
         UserId: {
           relation: [
             {
-              id: userId
-            }
-          ]
-        }
+              id: userId,
+            },
+          ],
+        },
       }
-    )
+    );
 
     return teamAdapter([results], populateOptions);
+  }
+
+  async updateUserTeam(userTeamId: string, options: any) {
+    return await this.NotionClient.updatePage<TeamNotionResponse>(
+      userTeamId,
+      options
+    );
   }
 }
 

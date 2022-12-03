@@ -54,3 +54,47 @@ export const teamAdapter = (
   id: results[0].id,
   ...teamPropertiesAdapter(results[0].properties, populateOptions),
 });
+
+export const updateUserTeamDto = (userTeam: ITeam) => {
+  const teamDto: any = {};
+
+  let teamKeys = Object.keys(userTeam);
+  teamKeys = teamKeys.filter((key) => key !== "id" && key !== "Equipo");
+
+  teamKeys.forEach((key: string) => {
+    if (
+      userTeam[key as keyof ITeam] !== null &&
+      typeof userTeam[key as keyof ITeam] !== "number"
+    ) {
+      const tempId = userTeam[key as keyof ITeam] as any;
+      teamDto[key] = {
+        relation: [{ id: tempId.id }],
+      };
+    }
+
+    if (
+      userTeam[key as keyof ITeam] !== null &&
+      typeof userTeam[key as keyof ITeam] === "number"
+    ) {
+      const numberTeam = userTeam[key as keyof ITeam] as any;
+      teamDto[key] = {
+        number: numberTeam,
+      };
+    }
+
+    teamDto["UserId"] = {
+      relation: [{ id: userTeam.UserId }],
+    };
+    teamDto["Equipo"] = {
+      title: [
+        {
+          text: {
+            content: userTeam.Equipo,
+          },
+        },
+      ],
+    };
+  });
+
+  return teamDto;
+};

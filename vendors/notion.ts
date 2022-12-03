@@ -44,6 +44,15 @@ export class NotionClient implements HttpAdapter {
 
     return response as unknown as T;
   }
+
+  async updatePage<T>(pageId: string, properties: any): Promise<T> {
+    const response = await this.notion.pages.update({
+      page_id: pageId,
+      properties,
+    });
+
+    return response as unknown as T;
+  }
 }
 
 export const Notion = new NotionClient();
