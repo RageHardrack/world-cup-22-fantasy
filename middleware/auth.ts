@@ -1,3 +1,7 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  return navigateTo("/auth");
+  const user = useCookie("WC22F_user");
+
+  if (!user.value) {
+    return navigateTo("/auth");
+  }
 });

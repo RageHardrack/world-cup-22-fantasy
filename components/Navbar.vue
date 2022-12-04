@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useUIStore } from "~~/store";
+import { useUserStore } from "~~/store";
 
-const store = useUIStore();
+const store = useUserStore();
 </script>
 
 <template>

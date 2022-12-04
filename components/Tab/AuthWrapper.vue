@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Form as ValidationForm } from "vee-validate";
-import { useUIStore } from "~~/store";
+import { useUIStore, useUserStore } from "~~/store";
 
 import { RegisterUserSchema, LoginUserSchema } from "~~/schemas";
 
-const store = useUIStore();
+const uiStore = useUIStore();
+const userStore = useUserStore();
 const router = useRouter();
 
 const isSaving = ref(false);
@@ -25,7 +26,7 @@ const handleRegisterSubmit = async (values: any) => {
     });
 
     if (ok) {
-      store.setUser(username, accessToken);
+      userStore.setUser(username, accessToken);
       router.push("/fantasy");
       isSaving.value = false;
     }
@@ -50,7 +51,7 @@ const handleLoginSubmit = async (values: any) => {
     });
 
     if (ok) {
-      store.setUser(username, accessToken);
+      userStore.setUser(username, accessToken);
       isSaving.value = false;
       router.push("/fantasy");
     }
@@ -84,7 +85,7 @@ const handleLoginSubmit = async (values: any) => {
           </div>
         </ValidationForm>
 
-        <p @click="store.selectAuthTab('Registarse')" class="cursor-pointer">
+        <p @click="uiStore.selectAuthTab('Registarse')" class="cursor-pointer">
           ¿No tienes una cuenta? ¡Regístrate!
         </p>
       </TabAuth>
@@ -113,7 +114,7 @@ const handleLoginSubmit = async (values: any) => {
         </ValidationForm>
 
         <p
-          @click="store.selectAuthTab('Iniciar Sesión')"
+          @click="uiStore.selectAuthTab('Iniciar Sesión')"
           class="cursor-pointer"
         >
           ¿Ya tienes una cuenta? Inicia sesión!

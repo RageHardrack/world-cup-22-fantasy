@@ -18,8 +18,8 @@ const store = useUIStore();
       </ButtonTab>
     </header>
 
-    <TransitionGroup name="fade" tag="section" class="w-full">
+    <section class="w-full">
       <slot />
-    </TransitionGroup>
+    </section>
   </section>
 </template>

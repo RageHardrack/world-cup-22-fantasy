@@ -4,29 +4,20 @@ export type authTab = "Iniciar Sesión" | "Registarse";
 export interface UIState {
   selectedTab: string;
   selectedAuthTab: authTab;
-  isLoggedIn: boolean;
-  user?: {
-    username?: string;
-    accessToken?: string;
-  };
 }
 
 const state = (): UIState => ({
   selectedTab: useCookie("selectedTab").value || RESULTS_TABS[0],
   selectedAuthTab:
     (useCookie("selectedAuthTab").value as authTab) || "Iniciar Sesión",
-  isLoggedIn: false,
-  user: undefined,
 });
 
-export const useUIStore = definePiniaStore("UI", {
+export const useUIStore = definePiniaStore("WC22F_UI", {
   state,
   getters: {
     getSelectedTab: (state: UIState) => computed(() => state.selectedTab),
     getSelectedAuthTab: (state: UIState) =>
       computed(() => state.selectedAuthTab),
-    getUsername: (state: UIState) => computed(() => state.user?.username),
-    getIsLoggedIn: (state: UIState) => computed(() => state.isLoggedIn),
   },
   actions: {
     selectTab(tabValue: string) {
@@ -34,17 +25,6 @@ export const useUIStore = definePiniaStore("UI", {
     },
     selectAuthTab(tabValue: authTab) {
       this.selectedAuthTab = tabValue;
-    },
-    setUser(username: string, accessToken: string) {
-      this.isLoggedIn = true;
-      this.user = {
-        username,
-        accessToken,
-      };
-    },
-    logout() {
-      this.isLoggedIn = false;
-      this.user = undefined;
     },
   },
   persist: {
