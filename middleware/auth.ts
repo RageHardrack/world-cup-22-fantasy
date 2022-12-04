@@ -5,7 +5,7 @@ const userStore = useUserStore();
 export default defineNuxtRouteMiddleware(() => {
   const user = useCookie("WC22F_user");
 
-  if (!user.value) {
+  if (!user.value || !userStore.getIsLoggedIn) {
     userStore.logout();
     return navigateTo("/auth");
   }

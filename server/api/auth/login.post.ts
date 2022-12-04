@@ -28,7 +28,11 @@ export default defineEventHandler(async (event) => {
       );
     }
 
-    const accessToken = generateAccessToken({ id: existUser.id, ...body});
+    const accessToken = generateAccessToken({
+      id: existUser.id,
+      ...body,
+      password: existUser.Password,
+    });
 
     return {
       statusMessage: "Has iniciado sesión con éxito",
