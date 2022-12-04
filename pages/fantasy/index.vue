@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useUserStore } from "~~/store";
-
-const userStore = useUserStore();
+const { data, pending } = useLazyAsyncData("fantasy-team", () =>
+  $fetch("/api/user-teams")
+);
 definePageMeta({
   middleware: "auth",
 });
@@ -12,6 +12,6 @@ definePageMeta({
     <h1>Fantasy</h1>
     <h2>Próximamente</h2>
 
-    {{ userStore.getUsername }}
+    {{ data }}
   </section>
 </template>
