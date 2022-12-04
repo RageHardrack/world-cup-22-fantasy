@@ -12,8 +12,9 @@ export interface UIState {
 }
 
 const state = (): UIState => ({
-  selectedTab: RESULTS_TABS[0],
-  selectedAuthTab: "Iniciar Sesión",
+  selectedTab: useCookie("selectedTab").value || RESULTS_TABS[0],
+  selectedAuthTab:
+    (useCookie("selectedAuthTab").value as authTab) || "Iniciar Sesión",
   isLoggedIn: false,
   user: undefined,
 });
@@ -43,13 +44,10 @@ export const useUIStore = definePiniaStore("UI", {
     },
     logout() {
       this.isLoggedIn = false;
-      this.user = {
-        username: undefined,
-        accessToken: undefined,
-      };
+      this.user = undefined;
     },
   },
   persist: {
-    storage: persistedState.localStorage,
+    storage: persistedState.cookies,
   },
 });
