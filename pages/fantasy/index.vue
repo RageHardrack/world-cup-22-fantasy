@@ -2,7 +2,7 @@
 import { FILTER_FANTASY_OPTIONS } from "~~/constantes";
 
 const { data, pending } = useLazyAsyncData("fantasy-team", () =>
-   $fetch("/api/user-teams"), {}
+   $fetch("/api/user-teams")
 );
 
 const { data: jugadores, pending: jugadoresLoading } = useLazyAsyncData(
