@@ -10,7 +10,7 @@ class UserServices {
     private readonly usersDB: string
   ) {}
 
-  async registerUser(User: RegisterUser):Promise<IUser> {
+  async registerUser(User: RegisterUser): Promise<IUser> {
     const response = await this.NotionClient.createPage<UserNotionResponse>(
       this.usersDB,
       {
@@ -62,6 +62,22 @@ class UserServices {
     const users = await this.getUsers();
 
     return users.find((user: IUser) => user.Email === email);
+  }
+
+  async getUserFormacion(userId: string): Promise<string[] | []> {
+    const results = await this.NotionClient.getPage<UserNotionResponse>(userId);
+
+    const user = userAdapter([results]);
+
+    return user[0].Formacion || [];
+  }
+
+  async getUserJugadores(userId: string): Promise<string[] | []> {
+    const results = await this.NotionClient.getPage<UserNotionResponse>(userId);
+
+    const user = userAdapter([results]);
+
+    return user[0].Jugadores || [];
   }
 }
 

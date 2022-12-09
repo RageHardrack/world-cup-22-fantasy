@@ -5,8 +5,22 @@ const { data, pending } = useLazyAsyncData("fantasy-team", () =>
   $fetch("/api/user-teams")
 );
 
-const myTeamName = ref(data?.value?.Equipo);
+const { data: jugadores, pending: jugadoresLoading } = useLazyAsyncData(
+  "jugadores",
+  () => $fetch("/api/players/user-players")
+);
+
+const myTeamName = ref(data!.value!.Equipo);
 const selectedFilter = ref("Todos");
+
+const myPlayerList = computed(() =>
+  jugadores.value?.filter((jugador) => {
+    return selectedFilter.value === "Todos"
+      ? jugador
+      : jugador.Posicion === selectedFilter.value;
+  })
+);
+const myFormation = ref();
 
 const selectFilter = (newValue: string) => {
   selectedFilter.value = newValue;
@@ -27,8 +41,6 @@ definePageMeta({
     >
       <header class="w-full py-2 text-center rounded bg-color-4">
         <h2 class="text-3xl">Formaciones</h2>
-
-        {{data}}
       </header>
 
       <section class="flex items-center justify-center gap-x-2">
@@ -101,7 +113,14 @@ definePageMeta({
           <ul
             class="flex space-y-2 flex-col flex-1 w-full max-h-[680px] min-h-[680px] overflow-hidden overscroll-auto"
           >
-            <FantasyJugadorItem />
+            <Loading v-if="jugadoresLoading" />
+
+            <FantasyJugadorItem
+              v-for="jugador in myPlayerList"
+              :key="jugador.id"
+              :jugador="jugador"
+              v-else
+            />
           </ul>
         </section>
       </section>

@@ -13,5 +13,23 @@ export const RESULTS_TABS = [
 ];
 
 export const FILTER_FANTASY_OPTIONS = [
-  "Todos", "Porteros", "Centrales", "Mediocampo", "Delanteros"
-]
+  "Todos",
+  "Portero",
+  "Central",
+  "Mediocampo",
+  "Delantero",
+];
+
+export interface PositionFantasy {
+  Portero: string;
+  Central: string;
+  Mediocampo: string;
+  Delantero: string;
+}
+
+export const POSITION_FANTASY = {
+  Portero: "P",
+  Central: "C",
+  Mediocampo: "M",
+  Delantero: "D",
+};
