@@ -35,6 +35,8 @@ export default defineEventHandler(async (event) => {
     return {
       statusMessage: "Te has registrado con éxito",
       username: body.username,
+      formacion: [],
+      jugadores: [],
       accessToken,
       ok: true,
     };

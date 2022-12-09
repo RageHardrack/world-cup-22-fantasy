@@ -1,7 +1,17 @@
 <script setup lang="ts">
+import { FILTER_FANTASY_OPTIONS } from "~~/constantes";
+
 const { data, pending } = useLazyAsyncData("fantasy-team", () =>
   $fetch("/api/user-teams")
 );
+
+const myTeamName = ref(data?.value?.Equipo);
+const selectedFilter = ref("Todos");
+
+const selectFilter = (newValue: string) => {
+  selectedFilter.value = newValue;
+};
+
 definePageMeta({
   middleware: "auth",
 });
@@ -9,11 +19,16 @@ definePageMeta({
 
 <template>
   <section class="flex flex-col items-center justify-center w-full">
+    <Loading v-if="pending" />
+
     <article
       class="flex flex-col justify-center w-full max-w-6xl p-2 space-y-2 overflow-hidden rounded bg-color-2"
+      v-else
     >
       <header class="w-full py-2 text-center rounded bg-color-4">
         <h2 class="text-3xl">Formaciones</h2>
+
+        {{data}}
       </header>
 
       <section class="flex items-center justify-center gap-x-2">
@@ -62,6 +77,7 @@ definePageMeta({
               type="text"
               class="text-4xl bg-transparent text-color-4 placeholder:text-color-3"
               placeholder="Mi Equipo"
+              v-model="myTeamName"
             />
 
             <input
@@ -71,16 +87,19 @@ definePageMeta({
             />
 
             <div class="flex items-center justify-between w-full">
-              <ButtonFilter :isActive="false">Porteros</ButtonFilter>
-              <ButtonFilter :isActive="false">Centrales</ButtonFilter>
-              <ButtonFilter :isActive="false">Mediocampo</ButtonFilter>
-              <ButtonFilter :isActive="false">Delanteros</ButtonFilter>
-              <ButtonFilter :isActive="true">Todos</ButtonFilter>
+              <ButtonFilter
+                v-for="option in FILTER_FANTASY_OPTIONS"
+                :key="option"
+                :isActive="selectedFilter === option"
+                @clickButton="selectFilter(option)"
+              >
+                {{ option }}
+              </ButtonFilter>
             </div>
           </header>
 
           <ul
-            class="flex space-y-2 flex-col flex-1 w-full max-h-[680px] min-h-[680px] overflow-hidden over"
+            class="flex space-y-2 flex-col flex-1 w-full max-h-[680px] min-h-[680px] overflow-hidden overscroll-auto"
           >
             <FantasyJugadorItem />
           </ul>

@@ -39,19 +39,22 @@ const handleRegisterSubmit = async (values: any) => {
 const handleLoginSubmit = async (values: any) => {
   try {
     isSaving.value = true;
-    const { ok, username, accessToken } = await $fetch("/api/auth/login", {
-      method: "POST",
-      body: {
-        email: values.email,
-        password: values.password,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const { ok, username, accessToken, formacion, jugadores } = await $fetch(
+      "/api/auth/login",
+      {
+        method: "POST",
+        body: {
+          email: values.email,
+          password: values.password,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (ok) {
-      userStore.setUser(username, accessToken);
+      userStore.setUser(username, accessToken, formacion, jugadores);
       isSaving.value = false;
       router.push("/fantasy");
     }

@@ -12,37 +12,6 @@ export const RESULTS_TABS = [
   "Final",
 ];
 
-export const COUNTRY_EN_TO_ES = {
-  Ecuador: "Ecuador",
-  England: "Inglaterra",
-  Iran: "Irán",
-  Netherlands: "Países Bajos",
-  Qatar: "Qatar",
-  Senegal: "Senegal",
-  "United States": "Estados Unidos",
-  Wales: "Gales",
-  Argentina: "Argentina",
-  Poland: "Polonia",
-  "Saudi Arabia": "Arabia Saudita",
-  Denmark: "Dinamarca",
-  Tunisia: "Túnez",
-  France: "Francia",
-  Australia: "Australia",
-  Mexico: "México",
-  Germany: "Alemania",
-  Spain: "España",
-  Japan: "Japón",
-  "Costa Rica": "Costa Rica",
-  Morocco: "Marruecos",
-  Croatia: "Croacia",
-  Belgium: "Bélgica",
-  Canada: "Canadá",
-  Brazil: "Brasil",
-  Cameroon: "Camerún",
-  Switzerland: "Suiza",
-  Serbia: "Serbia",
-  Portugal: "Portugal",
-  Ghana: "Ghana",
-  Uruguay: "Uruguay",
-  "South Korea": "Corea del Sur",
-};
+export const FILTER_FANTASY_OPTIONS = [
+  "Todos", "Porteros", "Centrales", "Mediocampo", "Delanteros"
+]

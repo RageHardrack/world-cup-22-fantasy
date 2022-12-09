@@ -37,6 +37,8 @@ export default defineEventHandler(async (event) => {
     return {
       statusMessage: "Has iniciado sesión con éxito",
       username: existUser.Username,
+      formacion: existUser.Formacion,
+      jugadores: existUser.Jugadores,
       accessToken,
       ok: true,
     };
