@@ -17,12 +17,41 @@ definePageMeta({
       </header>
 
       <section class="flex items-center justify-center gap-x-2">
-        <picture class="flex-1">
+        <picture class="relative flex-1">
           <img
             src="/img/campo_futbol.png"
             atl="Campo de Fútbol"
             class="w-full"
           />
+
+          <div class="absolute -translate-x-1/2 bottom-10 left-1/2">
+            <FantasyJugadorTitular />
+          </div>
+
+          <div
+            class="absolute flex w-full -translate-x-1/2 justify-evenly bottom-1/4 left-1/2"
+          >
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+          </div>
+
+          <div
+            class="absolute flex w-full -translate-x-1/2 justify-evenly bottom-2/4 left-1/2"
+          >
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+          </div>
+
+          <div
+            class="absolute flex w-full -translate-x-1/2 justify-evenly bottom-3/4 left-1/2"
+          >
+            <FantasyJugadorTitular />
+            <FantasyJugadorTitular />
+          </div>
         </picture>
 
         <section
