@@ -2,7 +2,7 @@
 import { FILTER_FANTASY_OPTIONS } from "~~/constantes";
 
 const { data, pending } = useLazyAsyncData("fantasy-team", () =>
-  $fetch("/api/user-teams")
+   $fetch("/api/user-teams"), {}
 );
 
 const { data: jugadores, pending: jugadoresLoading } = useLazyAsyncData(
@@ -10,7 +10,7 @@ const { data: jugadores, pending: jugadoresLoading } = useLazyAsyncData(
   () => $fetch("/api/players/user-players")
 );
 
-const myTeamName = ref(data!.value!.Equipo);
+const myTeamName = ref(data?.value?.Equipo);
 const selectedFilter = ref("Todos");
 
 const myPlayerList = computed(() =>
