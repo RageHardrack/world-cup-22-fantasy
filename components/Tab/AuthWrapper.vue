@@ -16,9 +16,9 @@ const handleRegisterSubmit = async (values: any) => {
     const { ok, username, accessToken } = await $fetch("/api/auth/register", {
       method: "POST",
       body: {
-        username: values.username,
-        email: values.email,
-        password: values.password,
+        username: values.registerUsername,
+        email: values.registerEmail,
+        password: values.registerPassword,
       },
       headers: {
         "Content-Type": "application/json",
@@ -39,22 +39,19 @@ const handleRegisterSubmit = async (values: any) => {
 const handleLoginSubmit = async (values: any) => {
   try {
     isSaving.value = true;
-    const { ok, username, accessToken, formacion, jugadores } = await $fetch(
-      "/api/auth/login",
-      {
-        method: "POST",
-        body: {
-          email: values.email,
-          password: values.password,
-        },
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const { ok, username, accessToken } = await $fetch("/api/auth/login", {
+      method: "POST",
+      body: {
+        email: values.loginEmail,
+        password: values.loginPassword,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (ok) {
-      userStore.setUser(username, accessToken, formacion, jugadores);
+      userStore.setUser(username, accessToken);
       isSaving.value = false;
       router.push("/fantasy");
     }
@@ -76,10 +73,14 @@ const handleLoginSubmit = async (values: any) => {
           :validation-schema="LoginUserSchema"
           class="flex flex-col p-4 space-y-4 overflow-hidden"
         >
-          <Input label="Email" name="email" placeholder="Ingresa tu email" />
+          <Input
+            label="Email"
+            name="loginEmail"
+            placeholder="Ingresa tu email"
+          />
           <InputPassword
             label="Contraseña"
-            name="password"
+            name="loginPassword"
             placeholder="Ingresa tu contraseña"
           />
 
@@ -101,13 +102,17 @@ const handleLoginSubmit = async (values: any) => {
         >
           <Input
             label="Username"
-            name="username"
+            name="registerUsername"
             placeholder="Ingresa tu username"
           />
-          <Input label="Email" name="email" placeholder="Ingresa tu email" />
+          <Input
+            label="Email"
+            name="registerEmail"
+            placeholder="Ingresa tu email"
+          />
           <InputPassword
             label="Contraseña"
-            name="password"
+            name="registerPassword"
             placeholder="Ingresa tu contraseña"
           />
 
